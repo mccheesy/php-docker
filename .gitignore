@@ -1,0 +1,7 @@
+# The mariadb directory is just a container for
+# database storage; do not track in source control
+mariadb/*
+!mariadb/.keep
+
+# Ignore SSL cert files; these are device specific
+/nginx/ssl/*.pem
