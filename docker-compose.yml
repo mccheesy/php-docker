@@ -10,6 +10,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: laravel
+    image: mccheesy/php
     networks:
       - bridge
     restart: unless-stopped

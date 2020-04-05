@@ -4,10 +4,10 @@ laravel-docker is a simple docker-compose orchestration that sets up a three-
 container network for local Laravel development. With this repo, you get:
 
 - Laravel container
-    - Builds custom from php7.2:alpine
+    - Builds custom from php:7.4-fpm-alpine
     - Adds a bunch* of PHP extensions
     - Installs curl, vim, and composer for convenience
-    - Maps ./src to /var/www/html
+    - Maps ./src to /var/www
     - Uses PHP-FPM running on :9000
 - Nginx container
     - Uses nginx:latest

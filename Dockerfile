@@ -1,35 +1,31 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.4-fpm-alpine
+
+LABEL org.label-schema.schema-version="1.0" \
+    org.label-schema.name="mccheesy/php7.4-fpm" \
+    org.label-schema.description="PHP-FPM built on Alpine Linux with a sane set of extensions for modern app development." \
+    maintainer="jmccleese@gmail.com"
 
 RUN apk update && apk add --no-cache \
     bash \
-    build-base \
-    curl \
+    icu-dev \
     imap-dev \
-    php7 \
-    php7-common \
-    php7-dom \
-    php7-fpm \
-    php7-gd \
-    php7-mbstring \
-    php7-mcrypt \
-    php7-mysqli \
-    php7-imap \
-    php7-json \
-    php7-openssl \
-    php7-pdo \
-    php7-pdo_mysql \
-    php7-phar \
-    php7-pcntl \
-    php7-session \
-    php7-xml \
-    php7-zip \
-    php7-zlib \
+    libpng-dev \
+    libzip-dev \
     shadow \
-    vim
+    vim \
+    zlib-dev
 
-RUN docker-php-ext-install imap pcntl pdo pdo_mysql
+RUN docker-php-ext-install \
+    bcmath \
+    gd \
+    imap \
+    intl \
+    pcntl \
+    pdo_mysql \
+    zip 
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | \
+    php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN usermod -u 1000 www-data && \
     groupmod -g 1000 www-data
