@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.7'
 
 networks:
   bridge:
@@ -33,8 +33,9 @@ services:
       - "3306:3306"
     restart: unless-stopped
     tty: true
+    user: "1000:1000"
     volumes:
-      - ./mariadb/:/var/lib/mysql
+      - ./mariadb/:/var/lib/mysql/
 
   nginx:
     container_name: nginx
