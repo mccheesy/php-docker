@@ -5,3 +5,6 @@ mariadb/*
 
 # Ignore SSL cert files; these are device specific
 /nginx/ssl/*.pem
+
+# Ignore Nginx log files
+/nginx/log/*.log

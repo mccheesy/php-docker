@@ -48,5 +48,7 @@ services:
     tty: true
     volumes:
       - ./src/:/var/www/
-      - ./nginx/laravel.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/laravel.conf:/etc/nginx/server.conf
       - ./nginx/ssl/:/etc/nginx/ssl/
+      - ./nginx/log/:/var/log/nginx/
