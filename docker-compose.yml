@@ -9,7 +9,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: php
+    container_name: php.php-docker
     image: mccheesy/php
     networks:
       - bridge
@@ -20,7 +20,7 @@ services:
     working_dir: /var/www
 
   mariadb:
-    container_name: mariadb
+    container_name: mariadb.php-docker
     environment:
       MYSQL_DATABASE: app
       MYSQL_USER: app
@@ -38,7 +38,7 @@ services:
       - ./mariadb/:/var/lib/mysql/
 
   nginx:
-    container_name: nginx
+    container_name: nginx.php-docker
     image: nginx:alpine
     networks:
       - bridge
