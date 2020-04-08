@@ -50,6 +50,7 @@ services:
     volumes:
       - ./src/:/var/www/
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/php-fpm.conf:/etc/nginx/php-fpm.conf
       - ./nginx/server.conf:/etc/nginx/server.conf
       - ./nginx/ssl/:/etc/nginx/ssl/
       - ./nginx/log/:/var/log/nginx/
