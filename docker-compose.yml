@@ -1,24 +1,6 @@
 version: '3.7'
 
-networks:
-  bridge:
-    driver: bridge
-
 services:
-  php:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: php.php-docker
-    image: mccheesy/php
-    networks:
-      - bridge
-    restart: unless-stopped
-    tty: true
-    volumes:
-      - ./src/:/var/www/
-    working_dir: /var/www
-
   mariadb:
     container_name: mariadb.php-docker
     environment:
@@ -27,8 +9,6 @@ services:
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: password
     image: mariadb:latest
-    networks:
-      - bridge
     ports:
       - "3306:3306"
     restart: unless-stopped
@@ -40,8 +20,6 @@ services:
   nginx:
     container_name: nginx.php-docker
     image: nginx:alpine
-    networks:
-      - bridge
     ports:
       - "80:80"
       - "443:443"
@@ -54,3 +32,15 @@ services:
       - ./nginx/server.conf:/etc/nginx/server.conf
       - ./nginx/ssl/:/etc/nginx/ssl/
       - ./nginx/log/:/var/log/nginx/
+
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php.php-docker
+    image: mccheesy/php
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./src/:/var/www/
+    working_dir: /var/www
