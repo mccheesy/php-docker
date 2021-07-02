@@ -29,7 +29,7 @@ services:
       - ./src/:/var/www/
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/php-fpm.conf:/etc/nginx/php-fpm.conf
-      - ./nginx/server.conf:/etc/nginx/server.conf
+      - ./nginx/server-ssl.conf:/etc/nginx/server.conf
       - ./nginx/ssl/:/etc/nginx/ssl/
       - ./nginx/log/:/var/log/nginx/
 
@@ -41,6 +41,7 @@ services:
     image: mccheesy/php
     restart: unless-stopped
     tty: true
+    user: "1000:1000"
     volumes:
       - ./src/:/var/www/
     working_dir: /var/www

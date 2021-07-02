@@ -6,13 +6,11 @@ LABEL org.label-schema.schema-version="1.0" \
     maintainer="jmccleese@gmail.com"
 
 RUN apk update && apk add --no-cache \
-    bash \
     icu-dev \
     imap-dev \
     libpng-dev \
     libzip-dev \
     shadow \
-    vim \
     zlib-dev
 
 RUN docker-php-ext-install \
@@ -23,9 +21,6 @@ RUN docker-php-ext-install \
     pcntl \
     pdo_mysql \
     zip 
-
-RUN curl -sS https://getcomposer.org/installer | \
-    php -- --install-dir=/usr/bin --filename=composer
 
 RUN usermod -u 1000 www-data && \
     groupmod -g 1000 www-data
